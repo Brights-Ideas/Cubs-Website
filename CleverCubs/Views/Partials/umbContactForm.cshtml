@@ -1,29 +1,40 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@model CleverCubs.Models.ContactModel 
 @{
     Layout = null;
 }
 
-<form action="/umbraco/surface/ContactFormSurface/SendEmail" enctype="multipart/form-data" id="formContact" method="post" novalidate="novalidate">
-		<div class="row 50%">
-			<div class="6u 12u(mobile)">
-				<input name="name" placeholder="Name" type="text">
-			</div>
-			<div class="6u 12u(mobile)">
-				<input name="email" placeholder="Email" type="text">
-			</div>
-		</div>
-		<div class="row 50%">
-			<div class="12u">
-				<textarea name="comment" placeholder="Comment"></textarea>
-			</div>
-		</div>
-		<div class="row 50%">
-			<div class="12u">
-				<button type="submit" class="form-button-submit button icon fa-envelope">Send Message</button>
-				@*<a href="#" class="form-button-submit button icon fa-envelope">Send Message</a>*@
-			</div>
-		</div>
-</form>
+@if (TempData["success"] == null)
+{
+    using (Html.BeginUmbracoForm("Submit", "Contact"))
+    {
+		    <div class="row 50%">
+			    <div class="6u 12u(mobile)">
+                    @Html.TextBoxFor(m => m.Name)
+				    <input name="name" placeholder="Name" type="text">
+			    </div>
+			    <div class="6u 12u(mobile)">
+                    @Html.TextBoxFor(m => m.Email)
+				    <input name="email" placeholder="Email" type="text">
+			    </div>
+		    </div>
+		    <div class="row 50%">
+			    <div class="12u">
+                    @Html.TextAreaFor(m => m.Message)
+				    <textarea name="comment" placeholder="Comment"></textarea>
+			    </div>
+		    </div>
+		    <div class="row 50%">
+			    <div class="12u">
+				    <button type="submit" class="form-button-submit button icon fa-envelope">Send Message</button>
+			    </div>
+		    </div>
+    }
+}
+else
+{
+    <p>We'll be in contact soon</p> 
+}
  <script>
 	$(function () {
 		$('form#formContact').validate({
@@ -43,13 +54,11 @@
 			rules: {
 				name: { required: true },
 				email: { required: true, email: true },
-				//Phone: { required: true, PhoneNumber: true },
 				comment: { required: true, maxlength: 500 }
 			},
 			messages: {
 					name: { required: 'Please enter your name' },
 					email: { required: 'Please enter an email address', email: 'Please enter a valid email address' },
-					//Phone: { required: 'Please enter a phone number' },
 					comment: { required: 'Please enter a message', maxlength: 'The message you have entered is too long.' }
 				}
 			});

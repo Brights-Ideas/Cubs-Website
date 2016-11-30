@@ -328,6 +328,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\ie7.css" />
+    <Content Include="css\ie8.css" />
+    <Content Include="css\ie9.css" />
+    <Content Include="css\images\highlight.png" />
+    <Content Include="css\images\icons-contact.png" />
+    <Content Include="css\images\icons-meta.png" />
+    <Content Include="css\images\icons-special.png" />
+    <Content Include="css\images\overlay.png" />
+    <Content Include="css\skel-noscript.css" />
+    <Content Include="css\style-1000px.css" />
+    <Content Include="css\style-desktop.css" />
+    <Content Include="css\style-mobile.css" />
+    <Content Include="css\style.css" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -361,6 +374,24 @@
     <Content Include="Config\applications.config" />
     <Content Include="Config\404handlers.config" />
     <None Include="Properties\PublishProfiles\clevercubs.pubxml" />
+    <Content Include="Views\Contact.cshtml" />
+    <Content Include="Views\ContactForm.cshtml" />
+    <Content Include="Views\umbHomePage.cshtml" />
+    <Content Include="Views\umbLayout.cshtml" />
+    <Content Include="Views\umbNewsItem.cshtml" />
+    <Content Include="Views\umbNewsOverview.cshtml" />
+    <Content Include="Views\umbTextPage.cshtml" />
+    <Content Include="Views\Velocity.cshtml" />
+    <Content Include="Views\VelocityHomePage.cshtml" />
+    <Content Include="Views\Partials\umbAbout.cshtml" />
+    <Content Include="Views\Partials\umbContactForm.cshtml" />
+    <Content Include="Views\Partials\umbFeatures.cshtml" />
+    <Content Include="Views\Partials\umbHomepageBanner.cshtml" />
+    <Content Include="Views\Partials\umbHomePageSlideShow.cshtml" />
+    <Content Include="Views\Partials\umbLatestNewsWidget.cshtml" />
+    <Content Include="Views\Partials\umbNewsOverviewWidget.cshtml" />
+    <Content Include="Views\Partials\umbSocial.cshtml" />
+    <Content Include="Views\Partials\umbTopNavigation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -398,11 +429,16 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Contact\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
