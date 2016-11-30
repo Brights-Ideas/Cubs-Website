@@ -1,8 +1,12 @@
 ﻿@inherits UmbracoTemplatePage
 
 <!-- About -->
-<section>
-    <h2 class="major"><span>@Umbraco.Field("aboutTitle", recursive: true)</span></h2>
-    <p>@Umbraco.Field("aboutText", recursive: true)</p>
-</section>
+<div class="title">@Umbraco.Field("aboutTitle", recursive: true)</div>
+	<div id="intro" class="container">
+		<p class="style1">High quality of Early Years education provided by qualified staff, through fully mobile groups for parents, carers and settings...</p>
+		<p class="style2">
+			Full time pre-school or nursery is not for everyone...
+		</p>
+		<p class="style3">@Umbraco.Field("aboutText", recursive: true)</p>
+</div>
 <!-- /About -->

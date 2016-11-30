@@ -2,7 +2,8 @@
 @{
     Layout = "umbLayout.cshtml";
 }
-@{ Html.RenderPartial("umbHomepageBanner"); }
+@*{ Html.RenderPartial("umbHomepageBanner"); }*@
+@{Html.RenderPartial("umbHomePageSlideShow");} 
 <!-- Main -->
 <div id="main-wrapper">
     <div id="main" class="container">
@@ -13,7 +14,7 @@
         </div>
         <div class="row">
             <div class="12u">
-                @{   Html.RenderPartial("umbNewsOverviewWidget"); }
+                @*{   Html.RenderPartial("umbNewsOverviewWidget"); }*@
             </div>
         </div>
     </div>

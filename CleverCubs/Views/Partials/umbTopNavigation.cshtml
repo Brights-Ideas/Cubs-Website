@@ -10,18 +10,23 @@
     // We also check if "Hide in navigation" is on in the menu, we shouldn't show hidden items
     var menuItems = homePage.Children.Where("UmbracoNaviHide == false");
 }
-<!-- Nav -->
-<nav id="nav" class="skel-panels-fixed">
+
+<nav id="nav" class="">
+@*<nav id="nav" class="skel-panels-fixed">*@
     <ul>
         @* If the Url of the current page is "/" then we want to add the class "current_page_item" *@
         @* Otherwise, we set the class to null, that way it will not even be added to the <li> element *@
-        <li class="@(CurrentPage.Url == "/" ? "current_page_item" : null)"><a href="/">Home</a></li>
+        <li class="@(CurrentPage.Url == "/" ? "current_page_item" : null)">
+			<a href="/" style="background: url('@Umbraco.Media(homePage.menuImage.ToString()).Url') 0 0 no-repeat">Home</a></li>
 
         @foreach (var item in menuItems)
         {
             @* If the Id of the item is the same as the Id of the current page then we want to add the class "current_page_item" *@
             @* Otherwise, we set the class to null, that way it will not even be added to the <li> element *@
-            <li class="@(CurrentPage.Id == item.Id ? "current_page_item" : null)"><a href="@item.Url">@item.Name</a></li>
+			@* var media = Library.MediaById(item.menuImage);*@
+            <li class="@(CurrentPage.Id == item.Id ? "current_page_item" : null)">
+				<a href="@item.Url" style="background: url('@Umbraco.Media(item.menuImage.ToString()).Url') 0 0 no-repeat">@item.Name</a>
+			</li>
         }
     </ul>
 </nav>

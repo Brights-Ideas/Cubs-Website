@@ -9,15 +9,15 @@
 
 <!-- Contact -->
 <section>
-    <h2 class="major"><span>Get in touch</span></h2>
-    <ul class="contact">
+    <h3 class="icon fa-comment">Social</h3>
+    <p>
         @RenderLinkIfNotEmpty(homePage.FacebookLink, "facebook", "Facebook")
         @RenderLinkIfNotEmpty(homePage.TwitterLink, "twitter", "Twitter")
         @RenderLinkIfNotEmpty(homePage.RssLink, "rss", "RSS")
         @RenderLinkIfNotEmpty(homePage.DribbbleLink, "dribbble", "Dribbble")
         @RenderLinkIfNotEmpty(homePage.LinkedinLink, "linkedin", "Linked In")
         @RenderLinkIfNotEmpty(homePage.GoogleLink, "googleplus", "Google+")
-    </ul>
+    </p>
 </section>
 <!-- /Contact -->
 
@@ -29,6 +29,6 @@
     
     if (string.IsNullOrEmpty(link) == false)
     {
-        <li><a href="@link" class="@cssClass">@linkName</a></li>
+        <a href="@link" class="@cssClass">@linkName</a><br/>
     }
 }

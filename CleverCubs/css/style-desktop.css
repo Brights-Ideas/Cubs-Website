@@ -243,7 +243,7 @@
     font-weight: 700;
     text-transform: uppercase;
     padding: 6em 0 3em 0;
-    background: #fff;
+    /*background: #fff;*/
     margin: 0 auto;
   }
 
@@ -251,12 +251,12 @@
     {
       position: relative;
       text-align: center;
-      border-top: solid 5px #e7eae8;
+      /*border-top: solid 5px #e7eae8;*/
     }
 
       #header .logo div
       {
-        background: #fff;
+        /*background: #fff;*/
         position: relative;
         display: inline-block;
         padding: 0 1.5em 0 1.5em;
@@ -310,7 +310,8 @@
     #nav li
     {
       display: inline-block;
-      margin: 0 0.5em 0 0.5em;
+      /*margin: 0 0.5em 0 0.5em;*/
+	  width: 9.5em;
       top: 0;
       position: relative;
       -moz-transition: top .15s ease-in-out;
@@ -328,8 +329,8 @@
         color: #6b7770;
         top: -3px;
         padding: 3px 1.5em 0.25em 1.5em;
-        border-bottom-left-radius: 6px;
-        border-bottom-right-radius: 6px;
+        /*border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;*/
         outline: 0;
         -moz-transition: background-color .075s ease-in-out, color .075s ease-in-out;
         -webkit-transition: background-color .075s ease-in-out, color .075s ease-in-out;
