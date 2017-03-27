@@ -16,159 +16,97 @@
     <meta name="description" content="@Model.Content.GetPropertyValue("description")" />
 	<meta name="keywords" content="@Model.Content.GetPropertyValue("keywords")" />
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700|Open+Sans+Condensed:700" rel="stylesheet" />
-	<script src="/scripts/jquery.min.js"></script>
-	<script src="/scripts/jquery.dropotron.min.js"></script>
-	<script src="/scripts/skel.min.js"></script>
-	<script src="/scripts/skel-viewport.min.js"></script>							
-	
-	<script src="/scripts/util.js"></script>
-	<!--[if lte IE 8]><script src="/scripts/respond.min.js"></script><![endif]-->
-	<script src="/scripts/main.js"></script>
 			
     <link rel="stylesheet" href="/css/font-awesome.min.css" />
-			
-	<link rel="stylesheet" href="/css/slider_img.css" />
-	<link rel="stylesheet" href="/css/slider.css" />
-	
 	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="/css/Carousel.css" />
 	<link rel="stylesheet" href="/css/main.css" />
-	<link rel="stylesheet" href="/css/slider_style.css" />
-	<link rel="stylesheet" href="/css/carousel.css" />
+	<link rel="stylesheet" href="/css/custom.css" />
+	@*<link rel="stylesheet" href="/css/nav.css" />*@
 			
     <!--[if lte IE 9]><link rel="stylesheet" href="/css/ie9.css" /><![endif]-->
     <!--[if lte IE 8]><script src="/js/html5shiv.js"></script><link rel="stylesheet" href="/css/ie8.css" /><![endif]-->
     <!--[if lte IE 7]><link rel="stylesheet" href="/css/ie7.css" /><![endif]-->
 </head>
 <body class="homepage">
-	<!-- Wrapper -->
-	<div id="page-wrapper">
-		<!-- Header -->
-		<div id="header-wrapper" class="wrapper">
-			<div id="header" class="container">
-			<!-- Logo -->
-				<div id="logo">
-					<h1><a href="/">@Umbraco.Field("siteName", recursive: true)</a></h1>
-					<p>@Umbraco.Field("byline", recursive: true)</p>
-				</div>
-				<!-- Slideshow -->	
-					@{Html.RenderPartial("umbHomePageSlideShow");} 
-			
-				<!-- Nav -->
-					@{ Html.RenderPartial("umbTopNavigation"); }
-					
-			</div>
-		</div>
-		<!-- /Header -->
-	
-    
-    @RenderBody()
-
-    <!-- Footer -->
-	<div id="footer-wrapper" class="wrapper">
-		<div class="title">The Rest Of It</div>
-			<div id="footer" class="container">
-				<header class="style1">
-					<h2>Ipsum sapien elementum portitor?</h2>
-					<p>
-						Sed turpis tortor, tincidunt sed ornare in metus porttitor mollis nunc in aliquet.<br>
-						Nam pharetra laoreet imperdiet volutpat etiam consequat feugiat.
-						</p>
-				</header>
-				<hr>
-				<div class="row 150%">
-					<div class="6u 12u(mobile)">
-
-					<!-- Contact Form -->
-						<section>
-							<form method="post" action="#">
-								<div class="row 50%">
-									<div class="6u 12u(mobile)">
-										<input type="text" name="name" id="contact-name" placeholder="Name">
-									</div>
-									<div class="6u 12u(mobile)">
-										<input type="text" name="email" id="contact-email" placeholder="Email">
-									</div>
-								</div>
-								<div class="row 50%">
-									<div class="12u">
-										<textarea name="message" id="contact-message" placeholder="Message" rows="4"></textarea>
-									</div>
-								</div>
-								<div class="row">
-									<div class="12u">
-										<ul class="actions">
-											<li><input type="submit" class="style1" value="Send"></li>
-											<li><input type="reset" class="style2" value="Reset"></li>
-										</ul>
-									</div>
-								</div>
-							</form>
-						</section>
+	<!-- Header -->
+	@*{ Html.RenderPartial("umbHomePageBanner"); }*@
+	<header id="header-wrapper" class="">
+    	@*<div id="header" class="logo-nav">*@
+			<div class="container">
+				<div class="row">
+					<div class="4u 12u(mobile)">
+						<div id="logo">
+							@{ Html.RenderPartial("umbHomePageBanner"); }
+							@*<h1>@Umbraco.Field("siteName", recursive: true)</h1>	
+							<p>@Umbraco.Field("byline", recursive: true)</p>*@
+						</div>
 					</div>
-				<div class="6u 12u(mobile)">
-
-								<!-- Contact -->
-									<section class="feature-list small">
-										<div class="row">
-											<div class="6u 12u(mobile)">
-												<section>
-													<h3 class="icon fa-home">Mailing Address</h3>
-													<p>
-														Untitled Corporation<br>
-														1234 Somewhere Rd #987<br>
-														Nashville, TN 00000-0000
-													</p>
-												</section>
-											</div>
-											<div class="6u 12u(mobile)">
-												@{ Html.RenderPartial("umbSocial"); }
-											</div>
-										</div>
-										<div class="row">
-											<div class="6u 12u(mobile)">
-												<section>
-													<h3 class="icon fa-envelope">Email</h3>
-													<p>
-														<a href="#">infountitled.tld</a>
-													</p>
-												</section>
-											</div>
-											<div class="6u 12u(mobile)">
-												<section>
-													<h3 class="icon fa-phone">Phone</h3>
-													<p>
-														(000) 555-0000
-													</p>
-												</section>
-											</div>
-										</div>
-									</section>
-
+					<!-- Nav -->
+					<div class="6u 12u(mobile)">
+						@{ Html.RenderPartial("umbTopNavigation"); }
+					</div>
+				</div>
+			</div>
+		@*</div>*@
+  	</header>
+	<!-- /Header -->
+							
+    @RenderBody()
+		
+	<div id="footer-wrapper" class="wrapper">
+		<div id="footer">
+			<div class="footer-top">
+				<div class="container">
+					<div class="row">
+						<div class="4u 12u(mobile)">
+							<!-- Contact Form -->
+							<h3>About Us</h3>
+							<ul class="meta">
+								<li class="icon fa-clock-o">Tuesdays - MINIS 9.45-10.30 am JNRS 11-11.45 am</li>
+								<li class="icon fa-map-marker">Royal British Legion – Manea</li>
+							</ul>
+						</div>
+						<div class="4u 12u(mobile)">
+							<!-- Contact -->
+							<div class="widget_text">
+							<h3>Contact Us</h3>
+								<ul class="meta">
+									<li class="icon fa-envelope"><a href="mailto:roxanneb@live.co.uk">roxanneb@live.co.uk</a></li>
+									<li class="icon fa-mobile">(+44) 07568 145063<li/>
+								</ul>
 							</div>
 						</div>
-						<hr>
+						<div class="4u 12u(mobile)">
+							<!-- Contact -->
+							<div class="widget_text">
+							<h3>Follow Us</h3>
+							@{ Html.RenderPartial("umbSocial"); }
+							</div>
+						</div>
 					</div>
-					<!-- Copyright -->
-					<div id="copyright">
-						<ul>
-							<li>&copy; @DateTime.Now.Year @Umbraco.Field("copyright", recursive: true)</li><li>Images: <a href="http://fotogrph.com">fotogrph</a></li><li>Design: <a href="http://html5up.net/">HTML5 UP</a></li>
-						</ul>
-					</div>
-					<!-- /Copyright -->
 				</div>
-    <!-- /Footer -->
+			</div>
+			<div class="footer-bottom">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+						<p>&copy; @DateTime.Now.Year @Umbraco.Field("copyright", recursive: true) </p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
 	</div>
+
 	<!-- Scripts -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script type="text/javascript" src="/scripts/jquery.timers.js"></script>
-    <script type="text/javascript" src="/scripts/default.js"></script>
-	
+	<script src="/scripts/jquery.min.js"></script>
 	<script src="/scripts/jquery.dropotron.min.js"></script>
-	<script src="/scripts/skel.min.js"></script>
-	<script src="/scripts/skel-viewport.min.js"></script>							
-	
+	@*<script src="/scripts/skel.min.js"></script>
+	<script src="/scripts/skel-viewport.min.js"></script>*@
 	<script src="/scripts/util.js"></script>
-	<!--[if lte IE 8]><script src="/scripts/respond.min.js"></script><![endif]-->
+	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 	<script src="/scripts/main.js"></script>
 						
 </body>

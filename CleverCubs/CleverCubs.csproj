@@ -342,9 +342,6 @@
     <Content Include="css\style-mobile.css" />
     <Content Include="css\style.css" />
     <Content Include="packages.config" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="App_Plugins\ModelsBuilder\package.manifest" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
@@ -377,7 +374,6 @@
     <Content Include="Views\Contact.cshtml" />
     <Content Include="Views\ContactForm.cshtml" />
     <Content Include="Views\umbHomePage.cshtml" />
-    <Content Include="Views\umbLayout.cshtml" />
     <Content Include="Views\umbNewsItem.cshtml" />
     <Content Include="Views\umbNewsOverview.cshtml" />
     <Content Include="Views\umbTextPage.cshtml" />

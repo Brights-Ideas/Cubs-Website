@@ -1,22 +1,38 @@
-﻿@inherits UmbracoTemplatePage
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
-    Layout = "umbLayout.cshtml";
+	Layout = "Velocity.cshtml";
+	
+	var homePage = CurrentPage.AncestorsOrSelf(1).First();    
+	var nodeIds = homePage.GetPropertyValue("slideshow").ToString().Split(',');
+	List<IPublishedContent> slides = new List<IPublishedContent>();
+
+	foreach (var nodeId in nodeIds)
+	{
+		if (!String.IsNullOrEmpty(nodeId))
+		{
+			var publishedContent = Umbraco.NiceUrl(Convert.ToInt32(nodeId));
+			if (!String.IsNullOrEmpty(publishedContent) && publishedContent != "#")
+			{
+				slides.Add(Umbraco.TypedContent(nodeId));
+			}
+		}
+	}
 }
-@*{ Html.RenderPartial("umbHomepageBanner"); }*@
-@{Html.RenderPartial("umbHomePageSlideShow");} 
-<!-- Main -->
-<div id="main-wrapper">
-    <div id="main" class="container">
-        <div class="row">
-            <div class="12u">
-                @{ Html.RenderPartial("umbFeatures"); }
-            </div>
-        </div>
-        <div class="row">
-            <div class="12u">
-                @*{   Html.RenderPartial("umbNewsOverviewWidget"); }*@
-            </div>
-        </div>
-    </div>
+<div class="wrapper slide">
+	<!-- Slideshow -->	
+	@{Html.RenderPartial("umbHomePageSlideShow");}
+</div>
+<!-- Intro -->
+<div id="intro-wrapper" class="wrapper style1">
+	@{Html.RenderPartial("umbAbout");}
+</div>
+<div class="home-services wrapper style4" style="background: url(../images/home-caring-bg.png) no-repeat top center #fff;">
+	@{Html.RenderPartial("umbCurrentGroups");}
+</div>
+<div class="wrapper" style="background: url(/media/1034/pattern.jpg)">
+	@{Html.RenderPartial("umbGallery");}
+</div>
+<div class="wrapper style3">
+	@{Html.RenderPartial("umbFeatures");}
 </div>
 <!-- /Main -->
