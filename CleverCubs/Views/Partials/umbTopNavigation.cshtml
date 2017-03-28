@@ -9,25 +9,39 @@
     // The menu items we want are all of the children of the homepage
     // We also check if "Hide in navigation" is on in the menu, we shouldn't show hidden items
     var menuItems = homePage.Children.Where("UmbracoNaviHide == false");
+	
+	var i = 1;
 }
-
-<nav id="nav" class="">
-@*<nav id="nav" class="skel-panels-fixed">*@
-    <ul>
-        @* If the Url of the current page is "/" then we want to add the class "current_page_item" *@
-        @* Otherwise, we set the class to null, that way it will not even be added to the <li> element *@
-        <li class="@(CurrentPage.Url == "/" ? "current_page_item" : null)">
-			<a href="/" style="background: url('@Umbraco.Media(homePage.menuImage.ToString()).Url') 0 0 no-repeat">Home</a></li>
-
-        @foreach (var item in menuItems)
-        {
-            @* If the Id of the item is the same as the Id of the current page then we want to add the class "current_page_item" *@
-            @* Otherwise, we set the class to null, that way it will not even be added to the <li> element *@
-			@* var media = Library.MediaById(item.menuImage);*@
-            <li class="@(CurrentPage.Id == item.Id ? "current_page_item" : null)">
-				<a href="@item.Url" style="background: url('@Umbraco.Media(item.menuImage.ToString()).Url') 0 0 no-repeat">@item.Name</a>
+<nav id="nav" class="navbar navbar-right">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+          <ul class="nav navbar-nav">
+			@* If the Url of the current page is "/" then we want to add the class "current_page_item" *@
+        	@* Otherwise, we set the class to null, that way it will not even be added to the <li> element *@
+        	<li class="menu-item @(CurrentPage.Url == "/" ? "current-menu-item" : null)">
+				<a href="/">Home</a>
 			</li>
-        }
-    </ul>
+				
+			@foreach (var item in menuItems)
+			{
+				++i;
+				@* If the Id of the item is the same as the Id of the current page then we want to add the class "current_page_item" *@
+				@* Otherwise, we set the class to null, that way it will not even be added to the <li> element *@
+				@* var media = Library.MediaById(item.menuImage);*@
+				<li class="menu-item m@(i) @(CurrentPage.Id == item.Id ? "current-menu-item" : null)">
+					<a href="@item.Url" role="button">
+						@item.Name
+					</a>
+				</li>
+			}
+          </ul>
+        </div><!--/.nav-collapse -->
 </nav>
 <!-- /Nav -->

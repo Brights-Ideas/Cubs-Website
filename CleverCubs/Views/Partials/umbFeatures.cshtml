@@ -7,26 +7,27 @@
     var homePage = CurrentPage.AncestorsOrSelf(1).First();
 }
 <!-- Features -->
-<div class="wrapper style3">
-	<div class="title">The Features</div>
-		<div id="highlights" class="container">
-			<div class="row 150%">
+<div id="highlights" class="container">
+	<header class="style1">
+		<h2>Our Events</h2>
+	</header>
+		<div class="row 150%">
 			@foreach (var feature in homePage.umbTextPages.Where("featuredPage"))
-            {
-                <div class="4u 12u(mobile)">
-                    <!-- Feature -->
-                    <section class="highlight">
-                        <a href="@feature.Url" class="image image-featured"><img src="@feature.Image" alt="" /></a>
-                        <h3><a href="@feature.Url">@feature.Name</a></h3>
-                        @Umbraco.Truncate(feature.BodyText, 100)
-						<ul class="actions">
-							<li><a href="#" class="button style1">Learn More</a></li>
+			{
+				<!-- Feature -->
+            	<div class="4u 12u(mobile)">
+              		<section class="highlight">
+						<a href="#" class="image featured"><img alt="" src="@feature.Image">
+						</a>
+                  		<h3>@feature.Name</h3>
+                  			@Umbraco.Truncate(feature.BodyText, 100)
+                  		<ul class="actions">
+                  			<a class="button" href="@feature.Url">Learn More</a>
 						</ul>
-                    </section>		
-                    <!-- /Feature -->
-                </div>
-            }
-			</div>
+              		</section>
+            	</div>
+				<!-- /Feature -->
+			}
 		</div>
 </div>
 <!-- /Features -->

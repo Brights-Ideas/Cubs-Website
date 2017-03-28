@@ -1,12 +1,45 @@
 ﻿@inherits UmbracoTemplatePage
+@{
+	var imagesList = Model.Content.GetPropertyValue<string>("aboutImages").Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse);
+    var imagesCollection = Umbraco.TypedMedia(imagesList).Where(x => x != null);
 
+}
 <!-- About -->
-<div class="title">@Umbraco.Field("aboutTitle", recursive: true)</div>
-	<div id="intro" class="container">
-		<p class="style1">High quality of Early Years education provided by qualified staff, through fully mobile groups for parents, carers and settings...</p>
-		<p class="style2">
-			Full time pre-school or nursery is not for everyone...
-		</p>
-		<p class="style3">@Umbraco.Field("aboutText", recursive: true)</p>
+<div id="intro" class="container">
+		<div class="row">
+			<div class="6u 12u(mobile)">
+				<!-- Image -->
+				<a href="#">
+				@if(CurrentPage.HasValue("aboutImages")){                                         
+					var introMediaItem = Umbraco.Media(imagesList.First());
+					<img class="img-responsive image featured" src="@introMediaItem.Url" alt="@introMediaItem.Name"/>
+				}
+				</a>
+				</div>
+				<div class="6u 12u(mobile)">
+					<h2 class="sec-title">@Umbraco.Field("aboutTitle", recursive: true)</h2>
+					<h3>@Umbraco.Field("aboutSubheading", recursive: true)</h3>
+
+					<p class="style3">@Umbraco.Truncate(CurrentPage.AboutText, 200)</p>
+					@if (CurrentPage.HasValue("aboutLink") && CurrentPage.aboutLink.ToString().Length > 2)
+					{
+						<ul>
+							@foreach (var item in CurrentPage.aboutLink)
+							{
+								var linkUrl = (bool)item.isInternal ? Umbraco.NiceUrl(item.Value<int>("internal")) : item.link;
+								var linkTarget = (bool)item.newWindow ? "_blank" : null;
+								<a href="@linkUrl" target="@linkTarget" class="button">@item.caption</a>
+							}
+						</ul>
+					}
+                    
+				</div>
+				@*<div class="4u 12u(mobile)">
+				@foreach (var imageItem in imagesCollection.Skip(1))
+				{
+					<img src="@imageItem.Url" class="image left" />
+				}
+			</div>*@
+		</div>
 </div>
 <!-- /About -->

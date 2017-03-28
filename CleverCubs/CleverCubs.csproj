@@ -388,6 +388,8 @@
     <Content Include="Views\Partials\umbNewsOverviewWidget.cshtml" />
     <Content Include="Views\Partials\umbSocial.cshtml" />
     <Content Include="Views\Partials\umbTopNavigation.cshtml" />
+    <Content Include="Views\Partials\umbCurrentGroups.cshtml" />
+    <Content Include="Views\Partials\umbGallery.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

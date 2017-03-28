@@ -2,7 +2,8 @@
 @{
 	var nodeIds = Model.Content.GetPropertyValue("slideshow").ToString().Split(',');
 	List<IPublishedContent> slides = new List<IPublishedContent>();
-
+	var i = 0;
+	
 	foreach (var nodeId in nodeIds)
 	{
 		if (!String.IsNullOrEmpty(nodeId))
@@ -15,52 +16,95 @@
 		}
 	}
 }
+<div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
+  <!-- Overlay -->
+  <div class="overlay"></div>
 
-<div id="slideshow" class="carousel slide">
-	<div class="view view-slider view-id-slider view-display-id-block">
-		<div id="flexslider_views_slideshow_main_slider-block" class="flexslider_views_slideshow_main views_slideshow_main flexslider_views_slideshow-processed">
-				
-			<div class="flexslider flexslider-processed">
-				<ul id="flexslider_views_slideshow_slider-block" class="flexslider-views-slideshow-main-frame slides">
-					@foreach (var slide in slides)
-					{
-						if (slide != null)
-						{
-							string styleString = !slide.IsFirst() ? "display:none;" : "";
-							
-							<li class="flexslider-views-slideshow-main-frame-row rotating-panel" style="width: 100%; float: left; margin-right: -100%;">
-								<div class="views-field views-field-field-slide-image">
-									<div class="field-content">
-										<img src="@slide.GetPropertyValue("mainImage")" alt="@slide.Name">
-									</div>
-								</div>
-								<div class="views-field views-field-body">
-									<div class="field-content">
-										@*Html.Raw(slide.GetPropertyValue("bodyText"))*@
-										<p><strong>High</strong> <b>quality of care</b> <span>and education provided</span></p>
-									</div>
-								</div>
-							</li>
-						}
-					}
-				</ul>
-				<ol id="slidePager" class="flex-control-nav">
-					@foreach (var slide in slides)
-					{
-						string classString = slide.IsFirst() ? "active" : "";
-						<li>
-							<a href="?position={position()}" class="@classString">
-								@slide.Position()
-							</a>
-						</li>
-					}
-				</ol>
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#bs-carousel" data-slide-to="0" class="active"></li>
+    <li data-target="#bs-carousel" data-slide-to="1"></li>
+    <li data-target="#bs-carousel" data-slide-to="2"></li>
+  </ol>
+  
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+	@foreach (var slide in slides)
+	{
+		i++;
+		if (slide.IsFirst())
+		{
+			<div class="item slides active">
+				<div class="slide-@i" style="background-image: url(@slide.GetPropertyValue("mainImage"));"></div>
+					<div class="hero">
+						<hgroup>
+						<h1>@slide.Name</h1>
+						</hgroup>
+					</div>		
 			</div>
-		</div>
-	</div>
-	<div id="block-block-6" class="8u 12u(small) block block-block block-odd">
-		<div class="content">
-			<p>8901 Marmora Road, Glasgow, D04 89GR. <span>+1 (959) 552 5963</span></p>
-		</div> 
-	</div>		
+		}
+		else
+		{
+			<div class="item slides">
+			  <div class="slide-@i" style="background-image: url(@slide.GetPropertyValue("mainImage"));"></div>
+			  <div class="hero">        
+				<hgroup>
+					<h1>@slide.Name</h1>        
+					@*<h3>Get start your next awesome project</h3>*@
+				</hgroup>       
+				@*<button class="btn btn-hero btn-lg" role="button">See all features</button>*@
+			  </div>
+			</div>
+		}
+	}
+  </div> 
+</div>
+@*<div class="container">
+    <!-- Indicators -->
+    <div id="Carousel" class="carousel main-slider" data-ride="carousel">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+			  @foreach (var slide in slides)
+			  {
+				  if (slide != null)
+				  {
+					  if (slide.IsFirst())
+					  {
+						  	<div class="item active" data-slide-number="">
+							 	<img class="img-responsive img-thumbnail" src="@slide.GetPropertyValue("mainImage")" alt="@slide.Name">
+								<div class="carousel-caption hidden-xs">
+                    				<h2>@slide.Name</h2>
+                    				<p>Details of Slide 1. Lorem Ipsum Blah Blah Blah....</p>
+                				</div>
+							</div>
+						}
+						else
+						  {
+								<div class="item">
+								  	<img class="img-responsive img-thumbnail" src="@slide.GetPropertyValue("mainImage")" alt="@slide.Name">
+									<div class="carousel-caption hidden-xs">
+                    					<h2>@slide.Name</h2>
+                					</div>
+								</div>
+						  }
+				  }
+			  }
+        </div>
+        <!-- Left and right controls -->
+    </div>
+	<!-- Top part of the slider -->
+    <div id="block-block-6" class="8u 12u(small) block block-block block-odd">
+    	<div class="content">
+        	<p>High quality of Early Years education provided by qualified staff, through fully mobile groups for parents, carers and settings.</p>
+      	</div>
+    </div>
+</div>*@
+
+<script src="/scripts/jquery.js"></script>
+<script src="/scripts/bootstrap.js"></script>
+@*<script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+</script>*@
 </div>

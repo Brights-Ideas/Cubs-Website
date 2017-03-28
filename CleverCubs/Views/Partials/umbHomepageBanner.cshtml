@@ -5,16 +5,19 @@
 	var link = CurrentPage.BannerLink.ToString();
 	
     <!-- Banner -->
-    <div id="banner-wrapper" style="background: url('@CurrentPage.BannerBackgroundImage') center center no-repeat;">
+    <div id="banner-wrapper">
         <section id="banner">
+			<img class="img-responsive" src="@CurrentPage.BannerBackgroundImage" />
             <h2>@Umbraco.Field("bannerHeader")</h2>
+			@*<br>*@
             <span class="byline">@Umbraco.Field("bannerSubheader")</span>
-            
+			
+			@*<span class="subline">@Umbraco.Field("bannerLinkText")</span>
 		    <!-- Only show the banner link if the link isn't empty -->
 			@if(link != "")
 			{
             	<a href="@Umbraco.Content(link).Url" class="button">@Umbraco.Field("bannerLinkText")</a>
-            }
+            }*@
         </section>
     </div>
     <!-- /Banner -->
