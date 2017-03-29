@@ -1,6 +1,6 @@
 ﻿@inherits UmbracoTemplatePage
 @{
-    Layout = "umbLayout.cshtml";
+    Layout = "Velocity.cshtml";
 
     // If the editor has not explicitly provided the "Page title" property page 
     // then just show the name of the page otherwise show the provided title
@@ -26,7 +26,7 @@
 
 }
 <!-- Main -->
-<div id="main-wrapper">
+<div class="wrapper style3">
     <div id="main" class="container">
         <div class="row">
             <div class="12u skel-cell-mainContent">
@@ -74,11 +74,11 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        @*<div class="row">
             <div class="12u">
                 @{ Html.RenderPartial("umbFeatures"); }
             </div>
-        </div>
+        </div>*@
     </div>
 </div>
 <!-- /Main -->

@@ -8,7 +8,7 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "edbfd90a441d7457")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "cb62e5ca8529d472")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 
@@ -555,50 +555,6 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 	}
 
-	/// <summary>Contact Form</summary>
-	[PublishedContentModel("contactForm")]
-	public partial class ContactForm : UmbTextPage
-	{
-#pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "contactForm";
-		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
-#pragma warning restore 0109
-
-		public ContactForm(IPublishedContent content)
-			: base(content)
-		{ }
-
-#pragma warning disable 0109 // new is redundant
-		public new static PublishedContentType GetModelContentType()
-		{
-			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
-		}
-#pragma warning restore 0109
-
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ContactForm, TValue>> selector)
-		{
-			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
-		}
-
-		///<summary>
-		/// Email Subject
-		///</summary>
-		[ImplementPropertyType("emailSubject")]
-		public string EmailSubject
-		{
-			get { return this.GetPropertyValue<string>("emailSubject"); }
-		}
-
-		///<summary>
-		/// Recipient Email Address
-		///</summary>
-		[ImplementPropertyType("recipientEmailAddress")]
-		public string RecipientEmailAddress
-		{
-			get { return this.GetPropertyValue<string>("recipientEmailAddress"); }
-		}
-	}
-
 	/// <summary>Gallery</summary>
 	[PublishedContentModel("gallery")]
 	public partial class Gallery : UmbMaster
@@ -666,6 +622,68 @@ namespace Umbraco.Web.PublishedContentModels
 		public string Image
 		{
 			get { return this.GetPropertyValue<string>("image"); }
+		}
+	}
+
+	/// <summary>Contact Form</summary>
+	[PublishedContentModel("umbContactForm")]
+	public partial class UmbContactForm : UmbMaster
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "umbContactForm";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public UmbContactForm(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<UmbContactForm, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Email Subject
+		///</summary>
+		[ImplementPropertyType("emailSubject")]
+		public string EmailSubject
+		{
+			get { return this.GetPropertyValue<string>("emailSubject"); }
+		}
+
+		///<summary>
+		/// Recipient Email Address
+		///</summary>
+		[ImplementPropertyType("recipientEmailAddress")]
+		public string RecipientEmailAddress
+		{
+			get { return this.GetPropertyValue<string>("recipientEmailAddress"); }
+		}
+
+		///<summary>
+		/// Sender Email Address
+		///</summary>
+		[ImplementPropertyType("senderEmailAddress")]
+		public string SenderEmailAddress
+		{
+			get { return this.GetPropertyValue<string>("senderEmailAddress"); }
+		}
+
+		///<summary>
+		/// Thank You Page
+		///</summary>
+		[ImplementPropertyType("thankYouPage")]
+		public object ThankYouPage
+		{
+			get { return this.GetPropertyValue("thankYouPage"); }
 		}
 	}
 

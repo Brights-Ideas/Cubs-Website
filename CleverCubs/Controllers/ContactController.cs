@@ -22,7 +22,7 @@ namespace CleverCubs.Controllers
             // Get current page properties
             var recipientProp = CurrentPage.GetProperty("recipientEmailAddress");
             var subjectProp = CurrentPage.GetProperty("emailSubject");
-            //var thankYouPageProp = CurrentPage.GetProperty("thankYouPage");
+            var thankYouPageProp = CurrentPage.GetProperty("thankYouPage");
             var senderProp = CurrentPage.GetProperty("senderEmailAddress");
 
             if (recipientProp == null || recipientProp.Value == null || recipientProp.Value.ToString().Length == 0)
@@ -35,6 +35,11 @@ namespace CleverCubs.Controllers
                 throw new MissingFieldException("The 'Email Subject' property has not been completed");
             }
 
+            if (thankYouPageProp?.Value == null || thankYouPageProp.Value.ToString().Length == 0)
+            {
+                throw new MissingFieldException("The 'Thank You Page' property has not been completed");
+            }
+
             if (senderProp == null || senderProp.Value == null || senderProp.Value.ToString().Length == 0)
             {
                 throw new MissingFieldException("The 'Sender Email Address' property has not been completed");
@@ -42,9 +47,12 @@ namespace CleverCubs.Controllers
             
             //send e-mail
             SendSmtpEmail(recipientProp.Value.ToString(), senderProp.Value.ToString(), subjectProp.Value.ToString(), model);
-            TempData["success"] = true;
+            //TempData["success"] = true;
             //redirect to current page to clear the form
-            return RedirectToCurrentUmbracoPage(); 
+            //return RedirectToCurrentUmbracoPage();
+
+            //Or redirect to specific page
+            return RedirectToUmbracoPage(Convert.ToInt32(thankYouPageProp.Value));
         }
 
 

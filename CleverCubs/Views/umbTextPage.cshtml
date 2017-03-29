@@ -1,6 +1,6 @@
 ﻿@inherits UmbracoTemplatePage
 @{
-    Layout = "umbLayout.cshtml";
+    Layout = "Velocity.cshtml";
 
     // If the editor has not explicitly provided the "Page title" property page 
     // then just show the name of the page otherwise show the provided title
@@ -8,41 +8,22 @@
         ? CurrentPage.Name
         : CurrentPage.Title;    
 }
-<div id="main-wrapper">
-    <div id="main" class="container">
-        <div class="row">
-            <div class="9u skel-cell-mainContent">
-                <div class="content content-left">
-                    <!-- Content -->
-                    <article class="is-page-content">
-                        <header>
-                            <h2>@pageTitle</h2>
-                        </header>
-                        <section>
-                            @if (string.IsNullOrWhiteSpace(CurrentPage.Image) == false)
-                            {
-                                <span class="image image-full"><img src="@CurrentPage.Image" alt="" /></span>
-                            }
 
-                            @CurrentPage.BodyText
-                        </section>                           
-                    </article>
-                    <!-- /Content -->
-                </div>
-            </div>
-            <div class="3u">
-                <div class="sidebar">
-                    <!-- Sidebar -->
-                    @*{ Html.RenderPartial("umbLatestNewsWidget"); }*@
-                    <!-- /Sidebar -->
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="12u">
-                @{ Html.RenderPartial("umbFeatures"); }
-            </div>
-        </div>
-    </div>
+<div class="wrapper style2">
+	<div id="main" class="container">
+		<!-- Content -->
+		<div id="content">
+			<article class="box post">
+				<header class="style1">
+					<h2>@pageTitle<br class="mobile-hide"></h2>
+				</header>
+				<!-- Image -->
+				<a href="#" class="image centered featured img-responsive">
+					<img src="@CurrentPage.Image" alt="">
+				</a>
+				<p>@CurrentPage.BodyText</p>
+			</article>
+		</div>
+	</div>
 </div>
 <!-- /Main -->
