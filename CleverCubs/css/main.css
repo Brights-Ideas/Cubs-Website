@@ -1182,6 +1182,32 @@
 		color: #a1aaa5;
 	}
 
+/* Nav */
+
+	#navbar .menu-item.m1 > a {
+		color: #ff911b;
+	}
+	#navbar .menu-item.m2 > a {
+		color: #ffc000;
+	}
+	#navbar .menu-item.m3 > a {
+		color: #a7c850;
+	}
+	#navbar .menu-item.m4 > a {
+		color: #a6a6a6;
+	}
+	#navbar .menu-item.m5 > a {
+		color: #7a8ed9;
+	}
+	#navbar .menu-item.m6 > a {
+		color: #ffff00;
+	}
+	#navbar .menu-item.m7 > a {
+		color: #eee;
+	}
+	#navbar .menu-item > a {
+		color: #eee;
+	}
 /* Table */
 
 	table {
@@ -2147,6 +2173,11 @@
 
 						#nav > ul > li.active > a, #nav > ul > li.active > span {
 							color: #fff;
+						}
+		
+							#navbar li.current a {
+								background: #fb6b47;
+								color: #fff !important;
 						}
 		
 			.dropotron {

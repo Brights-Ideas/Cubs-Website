@@ -11,18 +11,30 @@
 
 <div class="wrapper style2">
 	<div id="main" class="container">
-		<!-- Content -->
-		<div id="content">
-			<article class="box post">
-				<header class="style1">
-					<h2>@pageTitle<br class="mobile-hide"></h2>
-				</header>
-				<!-- Image -->
-				<a href="#" class="image centered featured img-responsive">
-					<img src="@CurrentPage.Image" alt="">
-				</a>
-				<p>@CurrentPage.BodyText</p>
-			</article>
+		<div class="row">
+			<div class="4u 12u(mobile)">
+			<!-- Sidebar -->
+				<div id="sidebar">
+					<section class="box">
+						@Html.Partial("umbContentPanels", @Model.Content)
+					</section>
+				</div>
+			</div>
+			<div class="8u 12u(mobile) important(mobile)">
+				<!-- Content -->
+				<div id="content">
+					<article class="box post">
+						<header class="style1">
+							<h2>@pageTitle<br class="mobile-hide"></h2>
+						</header>
+						<!-- Image -->
+						<a href="#" class="image centered featured">
+							<img src="@CurrentPage.Image" class="img-responsive" alt="">
+						</a>
+						<p>@CurrentPage.BodyText</p>
+					</article>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

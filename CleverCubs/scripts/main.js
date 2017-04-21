@@ -36,8 +36,8 @@
 			$('form').placeholder();
 
 		// CSS polyfills (IE<9).
-			//if (skel.vars.IEVersion < 9)
-				//$(':last-child').addClass('last-child');
+			if (skel.vars.IEVersion < 9)
+				$(':last-child').addClass('last-child');
 
 		// Prioritize "important" elements on mobile.
 			//skel.on('+mobile -mobile', function() {
@@ -87,9 +87,9 @@
 					});
 
 			// Fix: Remove navPanel transitions on WP<10 (poor/buggy performance).
-				//if (skel.vars.os == 'wp' && skel.vars.osVersion < 10)
-					//$('#titleBar, #navPanel, #page-wrapper')
-						//.css('transition', 'none');
+				if (skel.vars.os == 'wp' && skel.vars.osVersion < 10)
+					$('#titleBar, #navPanel, #page-wrapper')
+						.css('transition', 'none');
 
 	});
 

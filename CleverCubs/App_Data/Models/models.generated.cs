@@ -19,8 +19,8 @@ using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "cb62e5ca8529d472")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "88a12a329e77d37c")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 namespace Umbraco.Web.PublishedContentModels
 {
@@ -47,24 +47,6 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<UmbMaster, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
-		}
-
-		///<summary>
-		/// Description
-		///</summary>
-		[ImplementPropertyType("description")]
-		public string Description
-		{
-			get { return this.GetPropertyValue<string>("description"); }
-		}
-
-		///<summary>
-		/// Keywords
-		///</summary>
-		[ImplementPropertyType("keywords")]
-		public string Keywords
-		{
-			get { return this.GetPropertyValue<string>("keywords"); }
 		}
 
 		///<summary>
@@ -442,6 +424,15 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// Content Panels: Select the feature panels to appear in a row
+		///</summary>
+		[ImplementPropertyType("contentPanels")]
+		public string ContentPanels
+		{
+			get { return this.GetPropertyValue<string>("contentPanels"); }
+		}
+
+		///<summary>
 		/// Featured Page?: Is this a page that should be featured on the home page?
 		///</summary>
 		[ImplementPropertyType("featuredPage")]
@@ -668,6 +659,67 @@ namespace Umbraco.Web.PublishedContentModels
 		public object ThankYouPage
 		{
 			get { return this.GetPropertyValue("thankYouPage"); }
+		}
+	}
+
+	/// <summary>Content Panels</summary>
+	[PublishedContentModel("contentPanels")]
+	public partial class ContentPanels : UmbMaster
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "contentPanels";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public ContentPanels(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ContentPanels, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+	}
+
+	/// <summary>Content Panel</summary>
+	[PublishedContentModel("contentPanel")]
+	public partial class ContentPanel : ContentPanels
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "contentPanel";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public ContentPanel(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<ContentPanel, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Content
+		///</summary>
+		[ImplementPropertyType("content")]
+		public IHtmlString Content
+		{
+			get { return this.GetPropertyValue<IHtmlString>("content"); }
 		}
 	}
 

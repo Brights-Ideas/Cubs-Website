@@ -24,12 +24,14 @@
 		@foreach (var item in gallery.Take(3))
 		{
 			var galleryImage = item.GetPropertyValue<string>("image");
+			var galleryTxt = item.GetPropertyValue<string>("galleryText");
 			var image = Umbraco.TypedMedia(galleryImage);
 			
 			<div class="4u 12u(mobile)">
 				<a href="#" class="image featured">
 					<img class="group list-group-image" src="@image.Url" alt="@image.Name" />
 				</a>
+				<p>@Html.Raw(galleryTxt)</p>
 			</div>
 		}
 	</div>
@@ -37,12 +39,14 @@
 		@foreach (var item in gallery.Skip(3))
 		{
 			var galleryImage = item.GetPropertyValue<string>("image");
+			var galleryTxt = item.GetPropertyValue<string>("galleryText");
 			var image = Umbraco.TypedMedia(galleryImage);
 			
 			<div class="4u 12u(mobile)">
 				<a href="#" class="image featured">
 					<img class="group list-group-image" src="@image.Url" alt="@image.Name" />
 				</a>
+				<p>@Html.Raw(galleryTxt)</p>
 			</div>
 		}
 	</div>
